@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   get_debug.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtelega <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/09 19:13:00 by dtelega           #+#    #+#             */
-/*   Updated: 2016/12/09 20:11:22 by dtelega          ###   ########.fr       */
+/*   Created: 2017/03/02 14:35:29 by dtelega           #+#    #+#             */
+/*   Updated: 2017/03/02 14:35:30 by dtelega          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char		*ft_itoa(int n)
+void	get_debug(t_li *li)
 {
-	long int	nb;
-	size_t		len;
-	char		*str;
-	int			check_for_neg;
+	int		i;
 
-	nb = n;
-	len = ft_intlen(n);
-	check_for_neg = 0;
-	if (nb < 0)
+	i = 0;
+	ft_putstr("\n\e[5;32mDEBUG:\e[0m\n");
+	ft_putstr("a:");
+	while (i < li->len_a)
 	{
-		nb *= -1;
-		check_for_neg = 1;
+		ft_putstr(" ");
+		ft_putnbr(li->tab_a[i]);
+		i++;
 	}
-	if (!(str = (char *)malloc((len + 1) * sizeof(*str))))
-		return (NULL);
-	str[len] = '\0';
-	while (len--)
+	ft_putstr("\n");
+	i = 0;
+	ft_putstr("b:");
+	while (i < li->len_b)
 	{
-		str[len] = nb % 10 + '0';
-		nb = nb / 10;
+		ft_putstr(" ");
+		ft_putnbr(li->tab_b[i]);
+		i++;
 	}
-	if (check_for_neg == 1)
-		str[0] = '-';
-	return (str);
+	ft_putstr("\n\n");
 }
