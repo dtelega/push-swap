@@ -67,6 +67,8 @@ void	pa(t_ch *ch)
 	int		i;
 	int		l;
 
+	if (ch->len_b == 0)
+		return ;
 	temp = (int *)malloc(ch->ac * sizeof(temp));
 	temp[0] = ch->tab_b[0];
 	del_first_int_b(ch);
@@ -91,16 +93,16 @@ void	pb(t_ch *ch)
 
 	temp = (int *)malloc(ch->ac * sizeof(temp));
 	temp[0] = ch->tab_a[0];
-	del_first_int_b(ch);
+	del_first_int_a(ch);
 	i = 0;
 	l = 1;
 	while (i < ch->len_b)
 	{
-		temp[l] = ch->tab_a[i];
+		temp[l] = ch->tab_b[i];
 		i++;
 		l++;
 	}
-	free(ch->tab_a);
+	free(ch->tab_b);
 	ch->tab_b = temp;
 	ch->len_b++;
 }

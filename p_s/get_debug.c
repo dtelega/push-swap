@@ -16,23 +16,27 @@ void	get_debug(t_li *li)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	ft_putstr("\n\e[5;32mDEBUG:\e[0m\n");
-	ft_putstr("a:");
-	while (i < li->len_a)
+	ft_putstr("stack A(");
+	ft_putnbr(li->len_a);
+	ft_putstr("): ");
+	while (++i < li->len_a)
 	{
 		ft_putstr(" ");
 		ft_putnbr(li->tab_a[i]);
-		i++;
 	}
 	ft_putstr("\n");
-	i = 0;
-	ft_putstr("b:");
-	while (i < li->len_b)
+	i = -1;
+	ft_putstr("stack B(");
+	ft_putnbr(li->len_b);
+	ft_putstr("): ");
+	while (++i < li->len_b)
 	{
 		ft_putstr(" ");
 		ft_putnbr(li->tab_b[i]);
-		i++;
 	}
 	ft_putstr("\n\n");
+	ft_putnbr(li->bonus_count);
+	ft_putstr(" operations!\n\n");
 }

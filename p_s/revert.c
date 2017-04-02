@@ -17,7 +17,7 @@ void	make_min_first(t_li *li)
 	int		i_min;
 
 	i_min = 0;
-	while (li->tab_a[i_min] != li->min_int)
+	while (li->tab_a[i_min] != li->min_i_a)
 		i_min++;
 	if (i_min < li->len_a / 2 + 1)
 		ra(li);
@@ -32,6 +32,7 @@ void	ra(t_li *li)
 	int		len;
 	int		*tmp;
 
+	li->bonus_count++;
 	if (li->bonus_v == 0)
 		ft_putstr("ra\n");
 	else
@@ -61,11 +62,12 @@ void	rb(t_li *li)
 		ft_putstr("\e[1;41mrb\e[0m\n");
 	if (li->len_b == 0)
 		return ;
+	li->bonus_count++;
 	save_first = li->tab_b[0];
 	tmp = (int *)malloc((li->len_b + 1) * sizeof(tmp));
 	i = 1;
 	len = 0;
-	while (i <= li->len_b)
+	while (i < li->len_b)
 		tmp[len++] = li->tab_b[i++];
 	tmp[len] = save_first;
 	free(li->tab_b);
@@ -83,6 +85,7 @@ void	rra(t_li *li)
 		ft_putstr("rra\n");
 	else
 		ft_putstr("\e[1;41mrra\e[0m\n");
+	li->bonus_count++;
 	save_last = li->tab_a[li->len_a - 1];
 	tmp = (int *)malloc(li->len_a * sizeof(tmp));
 	tmp[0] = save_last;
@@ -109,8 +112,9 @@ void	rrb(t_li *li)
 		ft_putstr("rrb\n");
 	else
 		ft_putstr("\e[1;41mrrb\e[0m\n");
+	li->bonus_count++;
 	save_last = li->tab_b[li->len_b - 1];
-	tmp = (int *)malloc(li->len_b * sizeof(tmp));
+	tmp = (int *)malloc((li->len_b + 1) * sizeof(tmp));
 	tmp[0] = save_last;
 	i = 0;
 	k = 1;

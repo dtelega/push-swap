@@ -31,6 +31,47 @@ void	ra(t_ch *ch)
 	ch->tab_a = tmp;
 }
 
+void	rb(t_ch *ch)
+{
+	int		save_first;
+	int		i;
+	int		len;
+	int		*tmp;
+
+	len = 0;
+	save_first = ch->tab_b[0];
+	tmp = (int *)malloc(ch->len_b * sizeof(tmp));
+	i = 1;
+	len = 0;
+	while (i < ch->len_b)
+		tmp[len++] = ch->tab_b[i++];
+	tmp[len] = save_first;
+	free(ch->tab_b);
+	ch->tab_b = tmp;
+}
+
+void	rrb(t_ch *ch)
+{
+	int		save_last;
+	int		i;
+	int		k;
+	int		*tmp;
+
+	save_last = ch->tab_b[ch->len_b - 1];
+	tmp = (int *)malloc(ch->len_b * sizeof(tmp));
+	tmp[0] = save_last;
+	i = 0;
+	k = 1;
+	while (i + 1 < ch->len_b)
+	{
+		tmp[k] = ch->tab_b[i];
+		k++;
+		i++;
+	}
+	free(ch->tab_b);
+	ch->tab_b = tmp;
+}
+
 void	rra(t_ch *ch)
 {
 	int		save_last;

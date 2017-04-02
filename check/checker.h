@@ -6,7 +6,7 @@
 /*   By: dtelega <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 13:04:05 by dtelega           #+#    #+#             */
-/*   Updated: 2017/03/02 15:38:19 by dtelega          ###   ########.fr       */
+/*   Updated: 2017/03/05 16:39:24 by dtelega          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void				sa(t_ch *ch);
 void				pa(t_ch *ch);
 void				pb(t_ch *ch);
 void				ra(t_ch *ch);
+void				rb(t_ch *ch);
+void				rrb(t_ch *ch);
 void				rra(t_ch *ch);
 int					its_sort(t_ch *ch);
+int					valid_arg(char *agr);
 
 #endif

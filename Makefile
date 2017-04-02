@@ -16,15 +16,14 @@ NAME_C = checker
 FLAGS = -Wall -Werror -Wextra
 
 SRC_PATH = ./p_s/
-SRC_NAME = main.c revert.c del_first_int.c sort.c get_debug.c
+SRC_NAME = main.c revert.c del_first_int.c sort.c get_debug.c sort_int_tab.c valid_arg.c
 
 OBJ = $(SRC_NAME:.c=.o)
-OBJ_PATH = ./obj
 SRC = $($(SRC_PATH)/$(SRC_NAME))
 CPPFLAGS = -I ./p_s/ -I ./libft
 
 SRC_PATH_C = ./check/
-SRC_NAME_C = main.c commans_1.c commans_2.c get_next_line.c
+SRC_NAME_C = main_c.c commans_1.c commans_2.c get_next_line.c valid_arg.c
 
 OBJ_C = $(SRC_NAME_C:.c=.o)
 SRC_C = $($(SRC_PATH_C)/$(SRC_NAME_C))
@@ -35,28 +34,24 @@ LIBFT = -L ./libft/ -lft
 all: $(NAME) $(NAME_C)
 
 $(NAME): $(OBJ)
-	@make -C libft
-	@gcc $(FLAGS) $(CPPFLAGS) -o $@ $(OBJ) $(LIBFT)
+	make -C libft
+	gcc $(FLAGS) $(CPPFLAGS) -o $@ $(OBJ) $(LIBFT)
 $(NAME_C): $(OBJ_C)
-	@gcc $(FLAGS) $(CPPFLAGS) -o $@ $(OBJ_C) $(LIBFT)
+	gcc $(FLAGS) $(CPPFLAGS_C) -o $@ $(OBJ_C) $(LIBFT)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@gcc $(FLAGS) $(COOFLAGS) -o $@ -c $<
-$(OBJ_PATH_C)%.o: $(SRC_PATH_C)%.c
-	@mkdir $(OBJ_PATH_C) 2> /dev/null || true
-	@gcc $(FLAGS) $(COOFLAGS_C) -o $@ -c $<
+%.o: $(SRC_PATH)%.c
+	gcc $(FLAGS) $(COOFLAGS) -c $< -o $@
+%.o: $(SRC_PATH_C)%.c
+	gcc $(FLAGS) $(COOFLAGS_C) -c $< -o $@
 
 clean:
-	@make -C libft/ clean
-	@rm -f $(OBJ)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@rm -f $(OBJ_C)
-	@rmdir $(OBJ_PATH_C) 2> /dev/null || true
+	make -C libft/ clean
+	rm -f $(OBJ)
+	rm -f $(OBJ_C)
 
 fclean: clean
-	@make -C libft/ fclean
-	@rm -f $(NAME) $(NAME_C)
+	make -C libft/ fclean
+	rm -f $(NAME) $(NAME_C)
 
 re: fclean all
-	@make -C libft/ re
+	make -C libft/ re
