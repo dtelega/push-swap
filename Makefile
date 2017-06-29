@@ -15,15 +15,29 @@ NAME_C = checker
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC_PATH = ./p_s/
-SRC_NAME = main.c revert.c del_first_int.c sort.c get_debug.c sort_int_tab.c valid_arg.c
+OBJ_PATH = ./obj_c
+SRC_PATH = ./src_p_s/
+SRC_NAME = main.c \
+			revert.c \
+			del_first_int.c \
+			sort.c \
+			get_debug.c \
+			sort_int_tab.c \
+			valid_arg.c \
 
 OBJ = $(SRC_NAME:.c=.o)
 SRC = $($(SRC_PATH)/$(SRC_NAME))
 CPPFLAGS = -I ./p_s/ -I ./libft
 
-SRC_PATH_C = ./check/
-SRC_NAME_C = main_c.c commans_1.c commans_2.c get_next_line.c valid_arg.c
+SRC_PATH_C = ./src_check/
+SRC_NAME_C = main_checker.c \
+				ft_strjoin_free.c \
+				cmd1.c \
+				cmd2.c \
+				cmd3.c \
+				free_all.c \
+				get_next_line.c \
+				valid_arg_c.c
 
 OBJ_C = $(SRC_NAME_C:.c=.o)
 SRC_C = $($(SRC_PATH_C)/$(SRC_NAME_C))
